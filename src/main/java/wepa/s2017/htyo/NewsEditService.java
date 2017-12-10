@@ -55,15 +55,15 @@ public class NewsEditService {
         model.addAttribute("pieceOfContent", pieceOfNewsContent);
     }
 
-    public void deletePieceOfNewsContent(Long messageId) {
-        newsContentRepository.delete(messageId);
+    public void deletePieceOfNewsContent(Long pieceOfNewsContentId) {
+        newsContentRepository.delete(pieceOfNewsContentId);
     }
 
-    public void getOnePieceOfNewsContent(Model model, Long messageId) {
-        //pieceOfContent = newsContentRepository.findOne(messageId);
+    public void getOnePieceOfNewsContent(Model model, Long pieceOfNewsContentId) {
+        //pieceOfContent = newsContentRepository.findOne(pieceOfNewsContentId);
         //Do update here !
         //newsContentRepository.save(pieceOfContent); //UPDATE/WRITE
-        model.addAttribute("pieceOfContent", newsContentRepository.findOne(messageId));
+        model.addAttribute("pieceOfContent", newsContentRepository.findOne(pieceOfNewsContentId));
     }
 
     public void getAllPieceOfNewsContents(Model model) {
