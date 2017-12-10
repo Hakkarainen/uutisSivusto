@@ -1,0 +1,33 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Uutiset genreittäin</title>
+        
+        
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous" />
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" crossorigin="anonymous" />
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        <h1>Uutiset genreittäin (aihepiirin mukaisesti).</h1>
+        <p>Takaisin <a href="" th:href="@{~/home}">genrevalintaan</a></p>
+        
+        <h3><span th:text="${newsGenre.header}"></span></h3>
+        <ol>
+            <li th:each="pieceOfNewsHeader: ${NewsPerGenre}">
+            <p><span th:text="${pieceOfNewsHeader.header}"></span> <a th:href="${'/pieceOfNewsHeader?pieceOfNewsHeaderId=' + pieceOfNewsHeader.id}">Siirry aihepiirin uutisiin</a></p>
+            </li>
+        </ol>
+    </body>
+</html>

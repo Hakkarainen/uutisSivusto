@@ -1,0 +1,50 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Uutispalvelu</title>
+        
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous" />
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" crossorigin="anonymous" />
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>   
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="page-header">
+                <h1>Uutispalvelun ylläpitötila</h1>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-6">
+                    <h3>Uutisgenret</h3> 
+                    <table class="table">
+                        <tr th:each="newsGenre: ${newsGenres}">
+                            <td th:text="${newsGenre.header}"><a th:href="${'/newsGenres/' + newsGenre.id}">Genre</a></td>
+                        </tr>
+                        
+                        <tr>
+                            <th>Uutisaihe</th>
+                            <th>Uutisia</th>
+                            <th>Viimeisin</th>
+                        </tr>
+                         <tr th:each="pieceOfNewsHeader: ${pieceOfNewsHeaders}"> 
+                            <td><a th:text="${pieceOfNewsHeader.header}" th:href="@{~/{genre}/{id}(genre=${newsGenre.id},id=${pieceOfNewsHeader.id})}">Uutisotsikko</a></td>        
+                            <td th:text="${pieceOfNewsHeader.numberOfPieceOfNewsContents}">Number of content clips of piece of news</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

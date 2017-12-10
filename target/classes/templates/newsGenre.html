@@ -1,0 +1,72 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title th:text="${newsGenre.header}">Alue</title>
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous" />
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" crossorigin="anonymous" />
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="page-header">
+                <h1 th:text="'Uutisaihe: ' + ${newsGenre.header}">Genre</h1>
+                <p>Takaisin <a href="" th:href="@{~/home}">genrevalintaan</a></p>
+            </div>
+
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-6">
+                    <h3>Uutisaihe</h3> 
+                    <table class="table">
+                        <tr>
+                            <th>Genre</th>
+                            <th>Uutisaihe</th>
+                            <th>Toimittaja</th> 
+                        </tr>
+                        <tr> 
+                            <td th:text="${newsGenre.genre}">Genre</td>
+                            <td th:text="${newsGenre.header}" >Uutisaihe</td>        
+                            <td th:text="${newsGenre.editor}">Toimittaja</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8 bg-info"></div>
+                    <h3>Aloita uusi uutisaihe:</h3>
+                    <form method="GET" action="/crtPieceOfNewsHeader">
+                        <div class="form-group">
+                            <label for="startedBy">Toimittaja:</label>
+                            <input type="number" name="startedBy" id="startedBy" class="form-control" required="required" />
+                        </div>
+                        <div class="form-group">
+                            <label for="genre">Genre:</label>
+                            <input type="number" name="genre" id="genre" class="form-control" required="required" />
+                        </div>
+                        <div class="form-group">
+                            <label for="header">Uutisaihe:</label>
+                            <input type="text" name="header" id="header" class="form-control" maxlength="200" required="required" />
+                        </div>
+                
+                <button type="submit" class="btn btn-default">Lähetä!</button>
+                <p></p>
+                </form>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </body>
+</html>
