@@ -25,8 +25,8 @@ public class NewsGenreController {
     
     // Tämä POST luo ja tallettaa uuden uutisaihepiirin
     @RequestMapping(value = "/crtGenreForPieceOfNews", method = RequestMethod.POST)
-    public String createGenreForPieceOfNews(Model model, @RequestParam Long startedBy, @RequestParam Long genre, @RequestParam String header) {
-        newsGenreService.createPieceOfNewsHeader(model, startedBy, genre, header);
+    public String createGenreForPieceOfNews(Model model, @RequestParam Long startedBy, @RequestParam Long newsGenre, @RequestParam String header) {
+        newsGenreService.createPieceOfNewsHeader(model, startedBy, newsGenre, header);
         return "/newsGenre";
     }
 

@@ -9,18 +9,18 @@ CREATE TABLE User
 CREATE TABLE NewsGenre
 (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    genre INT NOT NULL UNIQUE, 
-    editor INT NOT NULL UNIQUE,
+    newsGenre INT, 
+    editor INT,
     header VARCHAR(100) NOT NULL UNIQUE,
 
-    FOREIGN KEY(editor) REFERENCES User(id)
+    FOREIGN KEY(editor) REFERENCES User(id),
   );
 
 CREATE TABLE PieceOfNewsHeader
 (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    startedBy INT NOT NULL UNIQUE,
-    genre INT NOT NULL UNIQUE,
+    startedBy INT,
+    genre INT,
     header VARCHAR(100) NOT NULL UNIQUE,
     numberOfPieceOfNewsContent INT NOT NULL,
     started TIMESTAMP NOT NULL,
@@ -32,13 +32,12 @@ CREATE TABLE PieceOfNewsHeader
 CREATE TABLE PieceOfNewsContent
 (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    editorID INT NOT NULL,
-    newsHeader INT NOT NULL,
+    editorID INT,
+    newsHeader INT,
     editor VARCHAR(30) NOT NULL,
     content VARCHAR(500) NOT NULL,
     sendTime TIMESTAMP NOT NULL,
 
-    FOREIGN KEY(editorID) REFERENCES User(id),
     FOREIGN KEY(newsHeader) REFERENCES PieceOfNewsHeader(id)
   );
 

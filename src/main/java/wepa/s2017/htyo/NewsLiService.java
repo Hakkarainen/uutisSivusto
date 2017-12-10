@@ -3,6 +3,7 @@ package wepa.s2017.htyo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import wepa.s2017.htyo.domain.NewsGenre;
 import wepa.s2017.htyo.domain.PieceOfNewsHeader;
 import wepa.s2017.htyo.domain.NewsGenreList;
 
@@ -19,7 +20,7 @@ public class NewsLiService {
     private PieceOfNewsHeader pieceOfNewsHeader;
     private NewsGenreList newsGenreList;
 
-    public void createPieceOfNewsHeader(Model model, Long startedBy, Long  genre, String header) {
+    public void createPieceOfNewsHeader(Model model, Long startedBy, NewsGenre  genre, String header) {
         pieceOfNewsHeader = new PieceOfNewsHeader(startedBy, genre, header); 
         newsLiRepository.save(pieceOfNewsHeader);
         model.addAttribute("pieceOfNewsHeader", pieceOfNewsHeader);

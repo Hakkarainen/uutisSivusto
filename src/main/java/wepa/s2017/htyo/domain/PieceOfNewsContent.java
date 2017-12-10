@@ -8,6 +8,9 @@ import java.sql.Timestamp;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -16,18 +19,25 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 @Entity
 @Table(name = "PieceOfNewsContent")
 public class PieceOfNewsContent extends AbstractPersistable<Long> {
-
-    @Column(name = "editorID")
-    private Long editorID;
-    @Column(name = "newsHeader")
-    private Long newsHeader;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private Long id;
     @Column(name = "editor")
     private String editor;
     @Column(name = "content")
     private String content;
     @Column(name = "sendTime")
     private Timestamp sendTime;
-
+    
+    @ManyToOne
+    @JoinColumn(name = "newsHeader")
+    private PieceOfNewsHeader newsHeader;
+    
+    @ManyToOne
+    @JoinColumn(name = "editorID")
+    private User editorID;
+    
     public PieceOfNewsContent() {
         this.editor = "Toimittaja";
         Date date = new Date();
@@ -42,7 +52,7 @@ public class PieceOfNewsContent extends AbstractPersistable<Long> {
         this.content = content;
     }
 
-    public PieceOfNewsContent(Long editorID, Long newsHeader, String editor, String content, Timestamp sendTime) {
+    public PieceOfNewsContent(User editorID, PieceOfNewsHeader newsHeader, String editor, String content, Timestamp sendTime) {
         this.editorID = editorID;
         this.editor = editor;
         this.newsHeader = newsHeader;
@@ -50,12 +60,24 @@ public class PieceOfNewsContent extends AbstractPersistable<Long> {
         this.content = content;
     }
 
-    public Long getEditorID() {
-        return editorID;
+    public Long getId() {
+        return id;
     }
 
-    public Long getDiscussion() {
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public PieceOfNewsHeader getNewsHeader() {
         return newsHeader;
+    }
+
+    public void setNewsHeader(PieceOfNewsHeader newsHeader) {
+        this.newsHeader = newsHeader;
+    }
+    
+    public User getEditorID() {
+        return editorID;
     }
 
     public String getEditor() {

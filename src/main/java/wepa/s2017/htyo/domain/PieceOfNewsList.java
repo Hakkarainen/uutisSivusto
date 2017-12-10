@@ -4,6 +4,9 @@ import java.sql.Timestamp;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
@@ -18,7 +21,10 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 
 @Table(name = "PieceOfNewsList")
 public class PieceOfNewsList extends AbstractPersistable<Long> {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private Long id;
     @Column(name = "editorID")
     private Integer editorID;
     @Column(name = "pieceOfNewsHeader")

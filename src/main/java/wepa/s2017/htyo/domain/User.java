@@ -9,7 +9,9 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.ManyToMany;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import org.springframework.data.jpa.domain.AbstractPersistable;
@@ -17,7 +19,10 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 @Entity
 @Table(name = "User")
 public class User extends AbstractPersistable<Long> {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private Long id;
     @Column(name = "userName")
     private String userName;
     @Column(name = "password")
@@ -47,7 +52,7 @@ public class User extends AbstractPersistable<Long> {
         return this.newsGenres;
     }
 
-    public void delPieceOfNewsHeader(NewsGenre newsGenre) {
+    public void delNewsGenres(NewsGenre newsGenre) {
         if (this.newsGenres == null) {
             return;
         }
@@ -104,36 +109,33 @@ public class User extends AbstractPersistable<Long> {
     public User(String userName) {
         this.userName = userName;
         this.password = "";
-
-        List<NewsGenre> newsGenres = new ArrayList<>();
-        List<PieceOfNewsHeader> pieceOfNewsHeaders = new ArrayList<>();
-        List<PieceOfNewsContent> pieceOfNewsContents = new ArrayList<>();
     }
 
     public User(String userName, String password) {
         this.userName = userName;
         this.password = password;
-
-        List<NewsGenre> newsGenres = new ArrayList<>();
-        List<PieceOfNewsHeader> pieceOfNewsHeaders = new ArrayList<>();
-        List<PieceOfNewsContent> pieceOfNewsContents = new ArrayList<>();
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
     public String getUserName() {
         return userName;
     }
+        public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
-//    public List<NewsGenre> getNewsGenres() {
-//        if (this.newsGenres == null) {
-//            this.newsGenres = new ArrayList<>();
-//        }
-//        return this.newsGenres;
-//    }
-//    public List<PieceOfNewsContent> getPieceOfNewsContents() {
-//        if (this.pieceOfNewsContents == null) {
-//            this.pieceOfNewsContents = new ArrayList<>();
-//        }
-//
-//        return this.pieceOfNewsContents;
-//    }
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

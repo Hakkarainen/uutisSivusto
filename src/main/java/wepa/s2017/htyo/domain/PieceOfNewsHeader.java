@@ -10,19 +10,23 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToMany;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "PieceOfNewsHeader")
 public class PieceOfNewsHeader extends AbstractPersistable<Long> {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private Long id;
     @Column(name = "startedBy")
     private Long startedBy;
-    @Column(name = "genre")
-    private Long genre;
     @Column(name = "header")
     private String header;
     @Column(name = "numberOfPieceOfNewsContent")
@@ -30,8 +34,12 @@ public class PieceOfNewsHeader extends AbstractPersistable<Long> {
     @Column(name = "started")
     private Timestamp started;
     
-    @OneToMany(mappedBy = "genre")
-    private List<PieceOfNewsHeader> pieceOfNewsHeaders;
+//    @ManyToOne
+//    @JoinColumn(name = "startedBy")
+//    private User startedBy;
+    @ManyToOne
+    @JoinColumn(name = "genre")
+    private NewsGenre genre;
     
     @OneToMany(mappedBy = "newsHeader")
     private List<PieceOfNewsContent> pieceOfNewsContents;
@@ -61,20 +69,36 @@ public class PieceOfNewsHeader extends AbstractPersistable<Long> {
     public PieceOfNewsHeader() {
     }
 
-    public PieceOfNewsHeader(Long startedBy, Long genre, String header) {
+    public PieceOfNewsHeader(Long startedBy, NewsGenre genre, String header) {
         this.startedBy = startedBy;
         this.genre = genre;
         this.header = header;
         this.numberOfPieceOfNewsContent = 0;
     }    
 
-    public PieceOfNewsHeader(Long startedBy, Long genre, String header, Integer numberOfPieceOfNewsContent, Timestamp started) {
+    public PieceOfNewsHeader(Long startedBy, NewsGenre genre, String header, Integer numberOfPieceOfNewsContent, Timestamp started) {
         this.startedBy = startedBy;
         this.genre = genre;
         this.header = header;
         this.numberOfPieceOfNewsContent = 0;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getStartedBy() {
+        return startedBy;
+    }
+
+    public void setStartedBy(Long startedBy) {
+        this.startedBy = startedBy;
+    }
+    
     public Long getInitiator() {
         return startedBy;
     }
@@ -83,11 +107,11 @@ public class PieceOfNewsHeader extends AbstractPersistable<Long> {
         this.startedBy = startedBy;
     }
 
-    public Long getGenre() {
+    public NewsGenre getGenre() {
         return genre;
     }
 
-    public void setGenre(Long genre) {
+    public void setGenre(NewsGenre genre) {
         this.genre = genre;
     }
 

@@ -9,11 +9,11 @@ CREATE TABLE User
 CREATE TABLE NewsGenre
 (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    genre INT NOT NULL UNIQUE, 
+    newsGenre INT, 
     editor INT,
     header VARCHAR(100) NOT NULL UNIQUE,
 
-    FOREIGN KEY(editor) REFERENCES User(id)
+    FOREIGN KEY(editor) REFERENCES User(id),
   );
 
 CREATE TABLE PieceOfNewsHeader
@@ -38,7 +38,6 @@ CREATE TABLE PieceOfNewsContent
     content VARCHAR(500) NOT NULL,
     sendTime TIMESTAMP NOT NULL,
 
-    FOREIGN KEY(editorID) REFERENCES User(id),
     FOREIGN KEY(newsHeader) REFERENCES PieceOfNewsHeader(id)
   );
 

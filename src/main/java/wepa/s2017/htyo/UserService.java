@@ -60,7 +60,7 @@ public class UserService {
         NewsGenre newsGenre = newsGenreRepository.getOne(newsGenreId);
         user = userRepository.getOne(Long.parseLong(userId));
         user.getNewsGenres().add(newsGenre);
-        newsGenre.setEditor(Long.parseLong(userId));
+        newsGenre.setEditor(user);
 
         userRepository.save(user);
         newsGenreRepository.save(newsGenre);

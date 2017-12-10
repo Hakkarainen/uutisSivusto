@@ -27,7 +27,7 @@ public class NewsGenreService {
 
     //PieceOfNewsHeader of the Genre
     public void createPieceOfNewsHeader(Model model, Long startedBy, Long genre, String header) {
-        pieceOfNewsHeader = new PieceOfNewsHeader(startedBy, genre, header); 
+        pieceOfNewsHeader = new PieceOfNewsHeader(startedBy, newsGenre, header); 
         addPieceOfNewsHeaderToGenre(model, pieceOfNewsHeader);
     }      
     public void addPieceOfNewsHeaderToGenre(Model model, PieceOfNewsHeader pieceOfNewsHeader) {
@@ -47,7 +47,7 @@ public class NewsGenreService {
     public void createNewsGenre(Model model, Integer genre, Long editor, String header) {
         User user = userRepository.findOne(editor);
         newsGenre = new NewsGenre();
-        newsGenre.setGenre(genre);
+        newsGenre.setNewsGenre(genre);
         newsGenre.setHeader(header);
         newsGenreRepository.save(newsGenre);
         newsGenre = newsGenreRepository.findOne(newsGenre.getId());
@@ -55,11 +55,11 @@ public class NewsGenreService {
         //For testing
         System.out.println();
         System.out.println("Id: " + newsGenre.getId());
-        System.out.println("genre: " + newsGenre.getGenre());
+        System.out.println("genre: " + newsGenre.getNewsGenre());
         System.out.println("editor: " + newsGenre.getEditor());
         System.out.println("header: " + newsGenre.getHeader());
         System.out.println();
-        user.getNewsGenres();
+        //user.getNewsGenres();
         user.addNewsGenres(newsGenre);
         userRepository.save(user);
         model.addAttribute("newsGenre", newsGenre);
