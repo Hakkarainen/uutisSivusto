@@ -10,4 +10,5 @@ import wepa.s2017.htyo.domain.User;
  */
 
 public interface UserRepository extends JpaRepository<User, Long> {
+    User findByUserName(String userName);
 }

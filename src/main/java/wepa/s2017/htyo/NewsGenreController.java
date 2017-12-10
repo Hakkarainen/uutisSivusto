@@ -10,7 +10,7 @@ import wepa.s2017.htyo.domain.NewsGenre;
 
 /**
  *
- * @author THyyppä
+ * @author THy
  */
 @Controller
 public class NewsGenreController {
@@ -32,8 +32,8 @@ public class NewsGenreController {
 
     // Tämä POST luo ja tallettaa uuden uutisaihepiirin
     @RequestMapping(value = "/crtNewsGenre", method = RequestMethod.GET)
-    public String createNewsGenre(Model model, @RequestParam Integer genre, @RequestParam Long editor, @RequestParam String header) {
-        newsGenreService.createNewsGenre(model, genre, editor, header);
+    public String createNewsGenre(Model model, @RequestParam Integer genre, @RequestParam String userName, @RequestParam String header) {
+        newsGenreService.createNewsGenre(model, genre, userName, header);
         return "/newsGenre";
     }
     

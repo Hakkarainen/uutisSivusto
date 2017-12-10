@@ -22,6 +22,7 @@ public class NewsGenreService {
     @Autowired
     private UserRepository userRepository;
     
+    private User user;
     private NewsGenre newsGenre;
     private PieceOfNewsHeader pieceOfNewsHeader;
 
@@ -35,8 +36,8 @@ public class NewsGenreService {
         newsGenreRepository.save(newsGenre);
         model.addAttribute("newsPerGenre", newsGenre.getPieceOfNewsHeaders());
     }
-    public void delPieceOfNewsHeaderfromGenre(Model model, PieceOfNewsHeader discussion) {
-        newsGenre.delPieceOfNewsHeader(discussion);
+    public void delPieceOfNewsHeaderfromGenre(Model model, PieceOfNewsHeader pieceOfNewsHeader) {
+        newsGenre.delPieceOfNewsHeader(pieceOfNewsHeader);
         newsGenreRepository.save(newsGenre);
         model.addAttribute("newsPerGenre", newsGenre.getPieceOfNewsHeaders());
     }
@@ -44,13 +45,10 @@ public class NewsGenreService {
         model.addAttribute("newsPerGenre", newsGenre.getPieceOfNewsHeaders());
     }
 
-    public void createNewsGenre(Model model, Integer genre, Long editor, String header) {
-        User user = userRepository.findOne(editor);
-        newsGenre = new NewsGenre();
-        newsGenre.setNewsGenre(genre);
-        newsGenre.setHeader(header);
-        newsGenreRepository.save(newsGenre);
-        newsGenre = newsGenreRepository.findOne(newsGenre.getId());
+    public void createNewsGenre(Model model, Integer genre, String userName, String header) {
+        user = userRepository.findByUserName(userName);
+        newsGenre = new NewsGenre(genre, user, header);
+        newsGenre = newsGenreRepository.save(newsGenre);
 
         //For testing
         System.out.println();
@@ -59,8 +57,9 @@ public class NewsGenreService {
         System.out.println("editor: " + newsGenre.getEditor());
         System.out.println("header: " + newsGenre.getHeader());
         System.out.println();
+        
         //user.getNewsGenres();
-        user.addNewsGenres(newsGenre);
+        user.addNewsGenre(newsGenre);
         userRepository.save(user);
         model.addAttribute("newsGenre", newsGenre);
     }

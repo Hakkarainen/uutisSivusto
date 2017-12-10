@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class NewsController {
     
     @Autowired
+    private UserService userService;
+        @Autowired
     private NewsGenreService newsGenreService;
 
     public NewsController(){
@@ -22,6 +24,7 @@ public class NewsController {
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public String Home(Model model) {
         newsGenreService.getAllNewsGenres(model);
+        userService.getAllUsers(model);
         return "/index";
     }
 }

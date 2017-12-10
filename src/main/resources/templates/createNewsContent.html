@@ -43,6 +43,10 @@
                 <div class="col-md-8 bg-info">
                     <h3>Lähetä uusi uutinen:</h3>
                     <form method="GET" action="/crtPieceOfNewsContent">
+                         <div class="form-group">
+                            <label for="editor">Uutisen otsikkonumero:</label>
+                            <input type="number" name="pieceOfNewsHeader" id="pieceOfNewsHeader" class="form-control" maxlength="20" required="required" />
+                        </div>
                         <div class="form-group">
                             <label for="editor">Nimimerkki:</label>
                             <input type="text" name="editor" id="editor" class="form-control" maxlength="20" required="required" />

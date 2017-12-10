@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import wepa.s2017.htyo.domain.NewsGenre;
 /**
  *
- * @author THyyppä
+ * @author THy
  */
 
 public interface NewsGenreRepository extends JpaRepository<NewsGenre, Long> {

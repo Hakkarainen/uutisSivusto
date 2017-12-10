@@ -37,8 +37,8 @@ public class NewsEditController {
 
     // Tämä POST luo ja tallettaa uuden uutisen 
     @RequestMapping(value = "/crtPieceOfNewsContent", method = RequestMethod.GET)
-    public String createPieceOfNewsContent(Model model, @RequestParam String editor, @RequestParam String content) {
-        newsEditService.createPieceOfNewsContent(model, editor, content);
+    public String createPieceOfNewsContent(Model model,  @RequestParam Long pieceOfNewsHeaderId, @RequestParam String editor, @RequestParam String content) {
+        newsEditService.createPieceOfNewsContent(model, pieceOfNewsHeaderId, editor, content);
         return "manageNews";
     }
 

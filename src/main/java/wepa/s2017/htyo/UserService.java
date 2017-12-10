@@ -1,5 +1,6 @@
 package wepa.s2017.htyo;
 
+import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -27,6 +28,18 @@ public class UserService {
 
     public void createUser(Model model, String userName, String password) {
         this.user = new User(userName, password);
+        //initialize OneToMany relations
+        this.user.getPieceOfNewsHeaders();
+        this.user.getPieceOfNewsContents();
+        this.user.getNewsGenres();
+        
+        //For testing
+        System.out.println("user");
+        System.out.println("      Id: " + user.getId());
+        System.out.println("userName: " + user.getUserName());
+        System.out.println("password: " + user.getPassword());
+        System.out.println();
+        
         userRepository.save(user);
         model.addAttribute("user", user);
     }

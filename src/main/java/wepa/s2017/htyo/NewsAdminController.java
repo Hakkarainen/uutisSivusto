@@ -14,12 +14,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class NewsAdminController {
     
     @Autowired
-    private NewsAdminService discussionAdminService;
+    private NewsAdminService newsAdminService;
 
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public String initDiscussionDB(Model model) {
-        discussionAdminService = new NewsAdminService();
-        discussionAdminService.initNewsDB(model);
+        newsAdminService = new NewsAdminService();
+//        newsAdminService.initNewsDB(model);
         return "/home";
     }
 }

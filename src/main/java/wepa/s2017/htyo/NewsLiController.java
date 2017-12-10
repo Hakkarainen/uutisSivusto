@@ -23,8 +23,8 @@ public class NewsLiController {
 
     // Tämä POST luo ja tallettaa uuden uutisen otsikkotiedot
     @RequestMapping(value = "/crtPieceOfNewsHeader", method = RequestMethod.GET)
-    public String createPieceOfNewsHeader(Model model, @RequestParam Long startedBy, @RequestParam NewsGenre genre, @RequestParam String header) {
-        this.newsLiService.createPieceOfNewsHeader(model, startedBy, genre, header);
+    public String createPieceOfNewsHeader(Model model, @RequestParam Long startedBy, @RequestParam Long genreId, @RequestParam String header) {
+        this.newsLiService.createPieceOfNewsHeader(model, startedBy, genreId, header);
         return "/manageNews";
     }
     

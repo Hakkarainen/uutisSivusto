@@ -1,12 +1,12 @@
 
 package wepa.s2017.htyo;
 
-import java.sql.Timestamp;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import wepa.s2017.htyo.domain.PieceOfNewsContent;
+import wepa.s2017.htyo.domain.PieceOfNewsHeader;
+import wepa.s2017.htyo.domain.User;
     
 /**
  *
@@ -17,11 +17,13 @@ public class NewsEditService {
 
     @Autowired
     private NewsContentRepository newsContentRepository;
-//    @Autowired
-//    private NewsHeaderRepository newsHeaderRepository;
+    @Autowired
+    private NewsHeaderRepository newsHeaderRepository;
     @Autowired
     private UserRepository userRepository;
 
+    User user;
+    PieceOfNewsHeader pieceOfNewsHeader;
 //    private List<User> users;
 //    private List<NewsHeader> newsHeaders;
 //    private User user;
@@ -29,9 +31,26 @@ public class NewsEditService {
     
     private PieceOfNewsContent pieceOfNewsContent;
 
-    public void createPieceOfNewsContent(Model model, String editor, String content) {
-        pieceOfNewsContent = new PieceOfNewsContent(editor, content); //CREATE
+    public void createPieceOfNewsContent(Model model, Long pieceOfNewsHeaderId, String editor, String content) {
+        user = userRepository.findByUserName(editor);
+        pieceOfNewsHeader = newsHeaderRepository.findOne(pieceOfNewsHeaderId);
+        pieceOfNewsContent = new PieceOfNewsContent(user, pieceOfNewsHeader, editor, content); //CREATE
         //PieceOfNewsContent(int editorID, int newsHeader, String editor, String content, Timestamp sendTime)
+        
+        //For testing
+        System.out.println("pieceOfNewsContent");
+        System.out.println("        Id: " + pieceOfNewsContent.getId());
+        System.out.println("      user: " + pieceOfNewsContent.getUser());
+        System.out.println("newsHeader: " + pieceOfNewsContent.getNewsHeader());
+        System.out.println("    editor: " + pieceOfNewsContent.getEditor());
+        System.out.println("   content: " + pieceOfNewsContent.getContent());
+        System.out.println("  sendTime: " + pieceOfNewsContent.getSendTime());
+        System.out.println();
+        
+        pieceOfNewsHeader.addPieceOfNewsContent(pieceOfNewsContent);
+        user.addPieceOfNewsContent(pieceOfNewsContent);
+        userRepository.save(user);
+        newsHeaderRepository.save(pieceOfNewsHeader);
         newsContentRepository.save(pieceOfNewsContent);
         model.addAttribute("pieceOfContent", pieceOfNewsContent);
     }

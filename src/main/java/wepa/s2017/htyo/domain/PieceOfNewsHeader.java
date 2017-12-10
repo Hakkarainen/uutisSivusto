@@ -37,6 +37,7 @@ public class PieceOfNewsHeader extends AbstractPersistable<Long> {
 //    @ManyToOne
 //    @JoinColumn(name = "startedBy")
 //    private User startedBy;
+    
     @ManyToOne
     @JoinColumn(name = "genre")
     private NewsGenre genre;

@@ -40,7 +40,7 @@
 
             <form method="POST" th:action="@{/users/{userId}/pieceOfNewsHeaders(userId=${user.id})}">
                 <select name="pieceOfNewsHeaderId">
-                    <option th:each="pieceOfNewsHeader : ${pieceOfNewsHeaders}" th:value="${pieceOfNewsHeader.id}" th:text="${pieceOfNewsHeader.header}">pieceOfNewsHeader</option>
+                    <option th:each="pieceOfNewsHeader : ${pieceOfNewsHeaders}" th:value="${pieceOfNewsHeader.id}" th:text="${pieceOfNewsHeader.header}">uutisotsikko</option>
                 </select>
                 <input type="submit" value="Liitä" id="add-to-pieceOfNewsHeader"/>
             </form>

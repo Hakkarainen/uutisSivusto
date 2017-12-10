@@ -1,3 +1,5 @@
+
+
 INSERT INTO User (userName, password) VALUES ('Kayttaja_a', 'pw1');
 INSERT INTO User (userName, password) VALUES ('Kayttaja_b', 'pw2');
 INSERT INTO User (userName, password) VALUES ('Kayttaja_c', 'pw3');

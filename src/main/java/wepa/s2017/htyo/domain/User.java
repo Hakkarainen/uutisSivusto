@@ -34,7 +34,7 @@ public class User extends AbstractPersistable<Long> {
     @OneToMany(mappedBy = "startedBy")
     private List<PieceOfNewsHeader> pieceOfNewsHeaders;
 
-    @OneToMany(mappedBy = "editorID")
+    @OneToMany(mappedBy = "user")
     private List<PieceOfNewsContent> pieceOfNewsContents;
 
     public List<NewsGenre> getNewsGenres() {
@@ -44,7 +44,7 @@ public class User extends AbstractPersistable<Long> {
         return this.newsGenres;
     }
 
-    public List<NewsGenre> addNewsGenres(NewsGenre newsGenre) {
+    public List<NewsGenre> addNewsGenre(NewsGenre newsGenre) {
         if (this.newsGenres == null) {
             this.newsGenres = new ArrayList<>();
         }

@@ -35,8 +35,8 @@ public class PieceOfNewsContent extends AbstractPersistable<Long> {
     private PieceOfNewsHeader newsHeader;
     
     @ManyToOne
-    @JoinColumn(name = "editorID")
-    private User editorID;
+    @JoinColumn(name = "user")
+    private User user;
     
     public PieceOfNewsContent() {
         this.editor = "Toimittaja";
@@ -52,11 +52,12 @@ public class PieceOfNewsContent extends AbstractPersistable<Long> {
         this.content = content;
     }
 
-    public PieceOfNewsContent(User editorID, PieceOfNewsHeader newsHeader, String editor, String content, Timestamp sendTime) {
-        this.editorID = editorID;
+    public PieceOfNewsContent(User user, PieceOfNewsHeader newsHeader, String editor, String content) {
+        this.user = user;
         this.editor = editor;
         this.newsHeader = newsHeader;
-        this.sendTime = sendTime;
+        Date date = new Date();
+        this.sendTime = new Timestamp(date.getTime());
         this.content = content;
     }
 
@@ -76,8 +77,8 @@ public class PieceOfNewsContent extends AbstractPersistable<Long> {
         this.newsHeader = newsHeader;
     }
     
-    public User getEditorID() {
-        return editorID;
+    public User getUser() {
+        return user;
     }
 
     public String getEditor() {
