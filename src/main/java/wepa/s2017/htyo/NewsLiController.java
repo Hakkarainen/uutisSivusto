@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import wepa.s2017.htyo.domain.EditorUser;
 import wepa.s2017.htyo.domain.NewsGenre;
 
 /**
@@ -17,6 +18,8 @@ public class NewsLiController {
     
     @Autowired
     private NewsLiService newsLiService;
+        @Autowired
+    private UserRepository userRepository;
 
     public NewsLiController() {
     }
@@ -24,7 +27,8 @@ public class NewsLiController {
     // Tämä POST luo ja tallettaa uuden uutisen otsikkotiedot
     @RequestMapping(value = "/crtPieceOfNewsHeader", method = RequestMethod.GET)
     public String createPieceOfNewsHeader(Model model, @RequestParam Long startedBy, @RequestParam Long genreId, @RequestParam String header) {
-        this.newsLiService.createPieceOfNewsHeader(model, startedBy, genreId, header);
+        EditorUser user = userRepository.getOne(startedBy);
+        this.newsLiService.createPieceOfNewsHeader(model, user, genreId, header);
         return "/manageNews";
     }
     

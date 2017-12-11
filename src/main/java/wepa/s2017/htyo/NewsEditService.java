@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import wepa.s2017.htyo.domain.PieceOfNewsContent;
 import wepa.s2017.htyo.domain.PieceOfNewsHeader;
-import wepa.s2017.htyo.domain.User;
+import wepa.s2017.htyo.domain.EditorUser;
     
 /**
  *
@@ -22,11 +22,11 @@ public class NewsEditService {
     @Autowired
     private UserRepository userRepository;
 
-    User user;
+    EditorUser user;
     PieceOfNewsHeader pieceOfNewsHeader;
 //    private List<User> users;
 //    private List<NewsHeader> newsHeaders;
-//    private User user;
+//    private EditorUser user;
 //    private NewsHeader newsHeader;
     
     private PieceOfNewsContent pieceOfNewsContent;

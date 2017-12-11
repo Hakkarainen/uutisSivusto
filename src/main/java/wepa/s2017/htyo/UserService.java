@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import wepa.s2017.htyo.domain.NewsGenre;
 import wepa.s2017.htyo.domain.PieceOfNewsHeader;
-import wepa.s2017.htyo.domain.User;
+import wepa.s2017.htyo.domain.EditorUser;
 
 /**
  *
@@ -24,10 +24,10 @@ public class UserService {
     @Autowired
     private NewsGenreRepository newsGenreRepository;
 
-    private User user;
+    private EditorUser user;
 
     public void createUser(Model model, String userName, String password) {
-        this.user = new User(userName, password);
+        this.user = new EditorUser(userName, password);
         //initialize OneToMany relations
         this.user.getPieceOfNewsHeaders();
         this.user.getPieceOfNewsContents();
@@ -59,19 +59,19 @@ public class UserService {
         model.addAttribute("users", userRepository.findAll());
     }
 
-    public void assignNewsHeaderToUser(String userId, Long pieceOfNewsHeaderId) {
+    public void assignNewsHeaderToUser(Long userId, Long pieceOfNewsHeaderId) {
         PieceOfNewsHeader pieceOfNewsHeader = newsHeaderRepository.getOne(pieceOfNewsHeaderId);
-        user = userRepository.getOne(Long.parseLong(userId));
+        user = userRepository.getOne(userId);
         user.getPieceOfNewsHeaders().add(pieceOfNewsHeader);
-        pieceOfNewsHeader.setInitiator(Long.parseLong(userId));
+        pieceOfNewsHeader.setStartedBy(user);
 
         userRepository.save(user);
         newsHeaderRepository.save(pieceOfNewsHeader);
     }
     
-        public void assignNewsGenreToUser(String userId, Long newsGenreId) {
+        public void assignNewsGenreToUser(Long userId, Long newsGenreId) {
         NewsGenre newsGenre = newsGenreRepository.getOne(newsGenreId);
-        user = userRepository.getOne(Long.parseLong(userId));
+        user = userRepository.getOne(userId);
         user.getNewsGenres().add(newsGenre);
         newsGenre.setEditor(user);
 

@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import wepa.s2017.htyo.domain.NewsGenre;
 import wepa.s2017.htyo.domain.PieceOfNewsHeader;
 import wepa.s2017.htyo.domain.NewsGenreList;
-import wepa.s2017.htyo.domain.User;
+import wepa.s2017.htyo.domain.EditorUser;
 
 /**
  *
@@ -22,15 +22,15 @@ public class NewsLiService {
     @Autowired
     private UserRepository userRepository;
 
-    private User user;
+    private EditorUser user;
     private PieceOfNewsHeader pieceOfNewsHeader;
     private NewsGenre newsGenre;
     private NewsGenreList newsGenreList;
 
-    public void createPieceOfNewsHeader(Model model, Long startedBy, Long genreId, String header) {
-        user = userRepository.findOne(startedBy);
+    public void createPieceOfNewsHeader(Model model, EditorUser startedBy, Long genreId, String header) {
+        user = userRepository.findOne(startedBy.getId());
         newsGenre = newsGenreRepository.findOne(genreId);
-        pieceOfNewsHeader = new PieceOfNewsHeader(startedBy, newsGenre, header);
+        pieceOfNewsHeader = new PieceOfNewsHeader(user, newsGenre, header);
         
         //For testing
         System.out.println("pieceOfNewsHeader");

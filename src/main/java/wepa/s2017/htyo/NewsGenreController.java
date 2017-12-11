@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import wepa.s2017.htyo.domain.EditorUser;
 import wepa.s2017.htyo.domain.NewsGenre;
 
 /**
@@ -18,6 +19,8 @@ public class NewsGenreController {
     @Autowired
     private NewsGenreService newsGenreService;
     @Autowired
+    private UserRepository userRepository;
+    @Autowired
     private NewsLiService newsLiService;
 
     public NewsGenreController() {
@@ -26,13 +29,14 @@ public class NewsGenreController {
     // Tämä POST luo ja tallettaa uuden uutisaihepiirin
     @RequestMapping(value = "/crtGenreForPieceOfNews", method = RequestMethod.POST)
     public String createGenreForPieceOfNews(Model model, @RequestParam Long startedBy, @RequestParam Long newsGenre, @RequestParam String header) {
-        newsGenreService.createPieceOfNewsHeader(model, startedBy, newsGenre, header);
+        EditorUser user = userRepository.getOne(startedBy);
+        newsGenreService.createPieceOfNewsHeader(model, user, newsGenre, header);
         return "/newsGenre";
     }
 
     // Tämä POST luo ja tallettaa uuden uutisaihepiirin
     @RequestMapping(value = "/crtNewsGenre", method = RequestMethod.GET)
-    public String createNewsGenre(Model model, @RequestParam Integer genre, @RequestParam String userName, @RequestParam String header) {
+    public String createNewsGenre(Model model, @RequestParam Long genre, @RequestParam String userName, @RequestParam String header) {
         newsGenreService.createNewsGenre(model, genre, userName, header);
         return "/newsGenre";
     }

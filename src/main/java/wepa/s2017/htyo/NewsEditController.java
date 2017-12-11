@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import wepa.s2017.htyo.domain.PieceOfNewsHeader;
-import wepa.s2017.htyo.domain.User;
+import wepa.s2017.htyo.domain.EditorUser;
 
 /**
  *
@@ -28,8 +28,8 @@ public class NewsEditController {
     @Autowired
     private UserRepository userRepository;
 
-    private List<User> users;
-    private User user;
+    private List<EditorUser> users;
+    private EditorUser user;
     private PieceOfNewsHeader PieceOfNewsHeader;
     
     public NewsEditController() {

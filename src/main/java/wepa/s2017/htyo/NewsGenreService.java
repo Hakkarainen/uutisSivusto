@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import wepa.s2017.htyo.domain.PieceOfNewsHeader;
 import wepa.s2017.htyo.domain.NewsGenre;
-import wepa.s2017.htyo.domain.User;
+import wepa.s2017.htyo.domain.EditorUser;
 
 /**
  *
@@ -22,12 +22,12 @@ public class NewsGenreService {
     @Autowired
     private UserRepository userRepository;
     
-    private User user;
+    private EditorUser user;
     private NewsGenre newsGenre;
     private PieceOfNewsHeader pieceOfNewsHeader;
 
     //PieceOfNewsHeader of the Genre
-    public void createPieceOfNewsHeader(Model model, Long startedBy, Long genre, String header) {
+    public void createPieceOfNewsHeader(Model model, EditorUser startedBy, Long genre, String header) {
         pieceOfNewsHeader = new PieceOfNewsHeader(startedBy, newsGenre, header); 
         addPieceOfNewsHeaderToGenre(model, pieceOfNewsHeader);
     }      
@@ -45,10 +45,11 @@ public class NewsGenreService {
         model.addAttribute("newsPerGenre", newsGenre.getPieceOfNewsHeaders());
     }
 
-    public void createNewsGenre(Model model, Integer genre, String userName, String header) {
+    public void createNewsGenre(Model model, Long genre, String userName, String header) {
         user = userRepository.findByUserName(userName);
         newsGenre = new NewsGenre(genre, user, header);
-        newsGenre = newsGenreRepository.save(newsGenre);
+        newsGenreRepository.save(newsGenre);
+        newsGenre = newsGenreRepository.findOne(genre);
 
         //For testing
         System.out.println();
@@ -58,7 +59,6 @@ public class NewsGenreService {
         System.out.println("header: " + newsGenre.getHeader());
         System.out.println();
         
-        //user.getNewsGenres();
         user.addNewsGenre(newsGenre);
         userRepository.save(user);
         model.addAttribute("newsGenre", newsGenre);

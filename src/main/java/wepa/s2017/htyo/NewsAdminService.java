@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 import wepa.s2017.htyo.domain.PieceOfNewsHeader;
 import wepa.s2017.htyo.domain.NewsGenre;
 import wepa.s2017.htyo.domain.PieceOfNewsContent;
-import wepa.s2017.htyo.domain.User;
+import wepa.s2017.htyo.domain.EditorUser;
 
 /**
  *
@@ -33,7 +33,7 @@ public class NewsAdminService {
     private PieceOfNewsHeader pieceOfNewsHeader;
     private NewsGenre newsGenre;
     private PieceOfNewsContent pieceOfNewsContent;
-    private User user;
+    private EditorUser user;
 
     public String initNewsDB(Model model) {
 
@@ -108,7 +108,7 @@ public class NewsAdminService {
     
     //Users
     public void createUser(Model model, String name) {
-//       user = new User(name); //CREATE
+//       user = new EditorUser(name); //CREATE
 //       userRepository.save(user);
 //       model.addAttribute("user", user);
     }

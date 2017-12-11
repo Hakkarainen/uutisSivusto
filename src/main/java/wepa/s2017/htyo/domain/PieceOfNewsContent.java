@@ -36,7 +36,7 @@ public class PieceOfNewsContent extends AbstractPersistable<Long> {
     
     @ManyToOne
     @JoinColumn(name = "user")
-    private User user;
+    private EditorUser user;
     
     public PieceOfNewsContent() {
         this.editor = "Toimittaja";
@@ -52,7 +52,7 @@ public class PieceOfNewsContent extends AbstractPersistable<Long> {
         this.content = content;
     }
 
-    public PieceOfNewsContent(User user, PieceOfNewsHeader newsHeader, String editor, String content) {
+    public PieceOfNewsContent(EditorUser user, PieceOfNewsHeader newsHeader, String editor, String content) {
         this.user = user;
         this.editor = editor;
         this.newsHeader = newsHeader;
@@ -77,7 +77,7 @@ public class PieceOfNewsContent extends AbstractPersistable<Long> {
         this.newsHeader = newsHeader;
     }
     
-    public User getUser() {
+    public EditorUser getUser() {
         return user;
     }
 

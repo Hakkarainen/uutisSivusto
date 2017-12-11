@@ -27,13 +27,13 @@ public class NewsGenre extends AbstractPersistable<Long> {
     @Column(name = "id")
     private Long id;
     @Column(name = "newsGenre")
-    private Integer newsGenre;
+    private Long newsGenre;
     @Column(name = "header")
     private String header;
 
     @ManyToOne
     @JoinColumn(name = "editor")
-    private User editor;
+    private EditorUser editor;
 
     @OneToMany(mappedBy = "genre", fetch = FetchType.EAGER)
     private List<PieceOfNewsHeader> pieceOfNewsHeaders;
@@ -41,7 +41,7 @@ public class NewsGenre extends AbstractPersistable<Long> {
     public NewsGenre() {
     }
 
-    public NewsGenre(Integer newsGenre, User editor, String header) {
+    public NewsGenre(Long newsGenre, EditorUser editor, String header) {
         this.newsGenre = newsGenre;
         this.editor = editor;
         this.header = header;
@@ -73,28 +73,28 @@ public class NewsGenre extends AbstractPersistable<Long> {
         this.pieceOfNewsHeaders.remove(pieceOfNewsHeader);
     }
 
-
+@Override
     public Long getId() {
         return id;
     }
-
+@Override
     public void setId(Long id) {
         this.id = id;
     }
     
-    public Integer getNewsGenre() {
+    public Long getNewsGenre() {
         return newsGenre;
     }
 
-    public void setNewsGenre(Integer newsGenre) {
+    public void setNewsGenre(Long newsGenre) {
         this.newsGenre = newsGenre;
     }
 
-    public User getEditor() {
+    public EditorUser getEditor() {
         return this.editor;
     }
 
-    public void setEditor(User editor) {
+    public void setEditor(EditorUser editor) {
         this.editor = editor;
     }
 

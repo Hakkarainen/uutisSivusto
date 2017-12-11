@@ -1,7 +1,11 @@
+--DROP TABLE User;
+--DROP TABLE NewsGenre;
+--DROP TABLE PieceOfNewsHeader;
+--DROP TABLE PieceOfNewsContent;
 
-CREATE TABLE User
+CREATE TABLE EditorUser
 (
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    id  INT auto_increment primary key,
     userName VARCHAR(30) NOT NULL UNIQUE,
     password VARCHAR(20) DEFAULT NULL
     --admin BOOLEAN DEFAULT 0);
@@ -9,30 +13,30 @@ CREATE TABLE User
 
 CREATE TABLE NewsGenre
 (
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    id INT auto_increment primary key,
     newsGenre INT, 
     editor INT,
     header VARCHAR(100) NOT NULL UNIQUE,
 
-    FOREIGN KEY(editor) REFERENCES User(id),
+    FOREIGN KEY(editor) REFERENCES EditorUser(id),
   );
 
 CREATE TABLE PieceOfNewsHeader
 (
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    id INT auto_increment primary key,
     startedBy INT,
     genre INT,
     header VARCHAR(100) NOT NULL UNIQUE,
     numberOfPieceOfNewsContent INT NOT NULL,
     started TIMESTAMP NOT NULL,
 
-    FOREIGN KEY(startedBy) REFERENCES User(id),
+    FOREIGN KEY(startedBy) REFERENCES EditorUser(id),
     FOREIGN KEY(genre) REFERENCES NewsGenre(id)
   );
 
 CREATE TABLE PieceOfNewsContent
 (
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    id INT auto_increment primary key,
     editorID INT,
     newsHeader INT,
     editor VARCHAR(30) NOT NULL,

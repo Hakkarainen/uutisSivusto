@@ -12,7 +12,6 @@ C:\Users\Composer\Documents\NetBeansProjects\wepa_uutisSivusto_2017s\uutisSivust
 C:\Users\Composer\Documents\NetBeansProjects\wepa_uutisSivusto_2017s\uutisSivusto\wepa_s2017_uutisivusto\src\main\java\wepa\s2017\htyo\NewsAdminRepository.java
 C:\Users\Composer\Documents\NetBeansProjects\wepa_uutisSivusto_2017s\uutisSivusto\wepa_s2017_uutisivusto\src\main\java\wepa\s2017\htyo\NewsEditListRepository.java
 C:\Users\Composer\Documents\NetBeansProjects\wepa_uutisSivusto_2017s\uutisSivusto\wepa_s2017_uutisivusto\src\main\java\wepa\s2017\htyo\NewsHeaderRepository.java
-C:\Users\Composer\Documents\NetBeansProjects\wepa_uutisSivusto_2017s\uutisSivusto\wepa_s2017_uutisivusto\src\main\java\wepa\s2017\htyo\domain\User.java
 C:\Users\Composer\Documents\NetBeansProjects\wepa_uutisSivusto_2017s\uutisSivusto\wepa_s2017_uutisivusto\src\main\java\wepa\s2017\htyo\NewsAdminService.java
 C:\Users\Composer\Documents\NetBeansProjects\wepa_uutisSivusto_2017s\uutisSivusto\wepa_s2017_uutisivusto\src\main\java\wepa\s2017\htyo\domain\PieceOfNewsList.java
 C:\Users\Composer\Documents\NetBeansProjects\wepa_uutisSivusto_2017s\uutisSivusto\wepa_s2017_uutisivusto\src\main\java\wepa\s2017\htyo\domain\NewsGenreList.java
@@ -21,6 +20,7 @@ C:\Users\Composer\Documents\NetBeansProjects\wepa_uutisSivusto_2017s\uutisSivust
 C:\Users\Composer\Documents\NetBeansProjects\wepa_uutisSivusto_2017s\uutisSivusto\wepa_s2017_uutisivusto\src\main\java\wepa\s2017\htyo\UserRepository.java
 C:\Users\Composer\Documents\NetBeansProjects\wepa_uutisSivusto_2017s\uutisSivusto\wepa_s2017_uutisivusto\src\main\java\wepa\s2017\htyo\NewsGenreRepository.java
 C:\Users\Composer\Documents\NetBeansProjects\wepa_uutisSivusto_2017s\uutisSivusto\wepa_s2017_uutisivusto\src\main\java\wepa\s2017\htyo\domain\PieceOfNewsContent.java
+C:\Users\Composer\Documents\NetBeansProjects\wepa_uutisSivusto_2017s\uutisSivusto\wepa_s2017_uutisivusto\src\main\java\wepa\s2017\htyo\domain\EditorUser.java
 C:\Users\Composer\Documents\NetBeansProjects\wepa_uutisSivusto_2017s\uutisSivusto\wepa_s2017_uutisivusto\src\main\java\wepa\s2017\htyo\DefaultController.java
 C:\Users\Composer\Documents\NetBeansProjects\wepa_uutisSivusto_2017s\uutisSivusto\wepa_s2017_uutisivusto\src\main\java\wepa\s2017\htyo\domain\PieceOfNewsHeader.java
 C:\Users\Composer\Documents\NetBeansProjects\wepa_uutisSivusto_2017s\uutisSivusto\wepa_s2017_uutisivusto\src\main\java\wepa\s2017\htyo\domain\NewsGenre.java

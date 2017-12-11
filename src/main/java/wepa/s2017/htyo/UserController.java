@@ -52,7 +52,7 @@ public class UserController {
     }
     
     @PostMapping("/user/pieceOfNewsHeaders/{pieceOfNewsHeaderId}")
-    public String assignUserToNewsHeader(@RequestParam String userId, @PathVariable Long pieceOfNewsHeaderId) {
+    public String assignUserToNewsHeader(@RequestParam Long userId, @PathVariable Long pieceOfNewsHeaderId) {
         if (pieceOfNewsHeaderId == null || userId == null) {
             return "redirect:/user";
         }
@@ -61,7 +61,7 @@ public class UserController {
     }
     
      @PostMapping("/user/newsGenres/{newsGenreId}")
-    public String assignUserToNewsGenre(@RequestParam String userId, @PathVariable Long newsGenreId) {
+    public String assignUserToNewsGenre(@RequestParam Long userId, @PathVariable Long newsGenreId) {
         if (newsGenreId == null || userId == null) {
             return "redirect:/user";
         }

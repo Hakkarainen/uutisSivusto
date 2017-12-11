@@ -25,8 +25,8 @@ public class PieceOfNewsHeader extends AbstractPersistable<Long> {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
-    @Column(name = "startedBy")
-    private Long startedBy;
+//    @Column(name = "startedBy")
+//    private Long startedBy;
     @Column(name = "header")
     private String header;
     @Column(name = "numberOfPieceOfNewsContent")
@@ -34,9 +34,9 @@ public class PieceOfNewsHeader extends AbstractPersistable<Long> {
     @Column(name = "started")
     private Timestamp started;
     
-//    @ManyToOne
-//    @JoinColumn(name = "startedBy")
-//    private User startedBy;
+    @ManyToOne
+    @JoinColumn(name = "startedBy")
+    private EditorUser startedBy;
     
     @ManyToOne
     @JoinColumn(name = "genre")
@@ -70,14 +70,14 @@ public class PieceOfNewsHeader extends AbstractPersistable<Long> {
     public PieceOfNewsHeader() {
     }
 
-    public PieceOfNewsHeader(Long startedBy, NewsGenre genre, String header) {
+    public PieceOfNewsHeader(EditorUser startedBy, NewsGenre genre, String header) {
         this.startedBy = startedBy;
         this.genre = genre;
         this.header = header;
         this.numberOfPieceOfNewsContent = 0;
     }    
 
-    public PieceOfNewsHeader(Long startedBy, NewsGenre genre, String header, Integer numberOfPieceOfNewsContent, Timestamp started) {
+    public PieceOfNewsHeader(EditorUser startedBy, NewsGenre genre, String header, Integer numberOfPieceOfNewsContent, Timestamp started) {
         this.startedBy = startedBy;
         this.genre = genre;
         this.header = header;
@@ -92,21 +92,21 @@ public class PieceOfNewsHeader extends AbstractPersistable<Long> {
         this.id = id;
     }
 
-    public Long getStartedBy() {
+    public EditorUser getStartedBy() {
         return startedBy;
     }
 
-    public void setStartedBy(Long startedBy) {
+    public void setStartedBy(EditorUser startedBy) {
         this.startedBy = startedBy;
     }
-    
-    public Long getInitiator() {
-        return startedBy;
-    }
-
-    public void setInitiator(Long startedBy) {
-        this.startedBy = startedBy;
-    }
+//    
+//    public EditorUser getInitiator() {
+//        return startedBy;
+//    }
+//
+//    public void setInitiator(EditorUser startedBy) {
+//        this.startedBy = startedBy;
+//    }
 
     public NewsGenre getGenre() {
         return genre;

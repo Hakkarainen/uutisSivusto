@@ -19,12 +19,12 @@ public class NewsApplication {
         SpringApplication.run(NewsApplication.class, args); 
         // Open connection to database
         //Connection connection = DriverManager.getConnection("jdbc:h2:mem:testdb", "sa", "");
-        Connection connection = DriverManager.getConnection("jdbc:h2:./database", "sa", "");
+        Connection connection = DriverManager.getConnection("jdbc:h2:mem:testdb", "sa", "");
         
         try {
             // If database has not yet been created, create it
             RunScript.execute(connection, new FileReader("schema.sql"));
-            ResultSet execute = RunScript.execute(connection, new FileReader("data.sql"));
+            ResultSet execute = RunScript.execute(connection, new FileReader("data2.sql"));
         } catch (Throwable t) {
             System.out.println(t.getMessage());
         }

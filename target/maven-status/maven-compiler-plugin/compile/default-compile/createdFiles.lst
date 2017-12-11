@@ -1,4 +1,5 @@
 wepa\s2017\htyo\NewsGenreController.class
+wepa\s2017\htyo\domain\EditorUser.class
 wepa\s2017\htyo\NewsApplication.class
 wepa\s2017\htyo\NewsEditService.class
 wepa\s2017\htyo\domain\NewsGenreList.class
@@ -7,7 +8,6 @@ wepa\s2017\htyo\domain\NewsGenre.class
 wepa\s2017\htyo\NewsGenreService.class
 wepa\s2017\htyo\domain\NewsAdmin.class
 wepa\s2017\htyo\NewsGenreRepository.class
-wepa\s2017\htyo\domain\User.class
 wepa\s2017\htyo\domain\PieceOfNewsList.class
 wepa\s2017\htyo\NewsHeaderRepository.class
 wepa\s2017\htyo\NewsAdminService.class
